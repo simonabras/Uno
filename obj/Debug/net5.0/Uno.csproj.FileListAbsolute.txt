@@ -1,0 +1,16 @@
+C:\Uno\obj\Debug\net5.0\Uno.csproj.AssemblyReference.cache
+C:\Uno\obj\Debug\net5.0\Uno.GeneratedMSBuildEditorConfig.editorconfig
+C:\Uno\obj\Debug\net5.0\Uno.AssemblyInfoInputs.cache
+C:\Uno\obj\Debug\net5.0\Uno.AssemblyInfo.cs
+C:\Uno\obj\Debug\net5.0\Uno.csproj.CoreCompileInputs.cache
+C:\Uno\bin\Debug\net5.0\Uno.exe
+C:\Uno\bin\Debug\net5.0\Uno.deps.json
+C:\Uno\bin\Debug\net5.0\Uno.runtimeconfig.json
+C:\Uno\bin\Debug\net5.0\Uno.runtimeconfig.dev.json
+C:\Uno\bin\Debug\net5.0\Uno.dll
+C:\Uno\bin\Debug\net5.0\ref\Uno.dll
+C:\Uno\bin\Debug\net5.0\Uno.pdb
+C:\Uno\obj\Debug\net5.0\Uno.dll
+C:\Uno\obj\Debug\net5.0\ref\Uno.dll
+C:\Uno\obj\Debug\net5.0\Uno.pdb
+C:\Uno\obj\Debug\net5.0\Uno.genruntimeconfig.cache
