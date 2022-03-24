@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace Uno
         static void Main(string[] args)
         {
             Clean();
-            Console.WriteLine("         Appuyez sur une touche pour jouer");
+            Console.WriteLine("         Appuyez sur ENTER pour jouer");
             Console.ReadLine();
             
             // Génération des inventaires et de la table
@@ -45,10 +45,24 @@ namespace Uno
 
                     string choice2 = "";
                     choice2 = Console.ReadLine();
+                    if(int.TryParse(choice2, out int choice2_)) {
+                        choice2_ -= 1;
+                        if(choice2_ >= 0 && choice2_ < inventories.GetLength(1))
+                        {
+                            string card = inventories[0, choice2_];
+                            if(card != null && CheckCardTable(card, table))
+                            {
+                                RemoveCard(0, card, ref inventories);
+                                table = card;
+                            }
+                        }
+                    }
                 }
                 else {
-
+                    string card = Generate();
+                    AddCard(0, card, ref inventories);
                 }
+                PlayBot(ref table, ref inventories);
             }
             if(CountPlayerCards(inventories) == 0)
             {
@@ -90,7 +104,7 @@ namespace Uno
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        // G�n�rer une cartes
+        // Générer une cartes
         static string Generate()
         {
             string[] cards = {
@@ -116,7 +130,7 @@ namespace Uno
             }
         }
 
-        // Ajouter une carte � l'inventaire du joueur ou du robot
+        // Ajouter une carte à l'inventaire du joueur ou du robot
         static void AddCard(int id, string card, ref string[,] inventories)
         {
             bool added = false;
@@ -150,7 +164,7 @@ namespace Uno
             }
         }
 
-        // V�rifier si une carte peut �tre jou�e
+        // Vérifier si une carte peut être jouée
         static bool CheckCardTable(string card, string table)
         {
             string cardColor = card.Substring(0, 1);
@@ -222,6 +236,25 @@ namespace Uno
                 }
             }
             return count;
+        }
+
+        static void PlayBot(ref string table, ref string[,] inventories)
+        {
+            bool played = false;
+            for(int i=0; i<inventories.GetLength(1); i++)
+            {
+                string card = inventories[1, i];
+                if(!played && card != null && CheckCardTable(card, table))
+                {
+                    RemoveCard(1, card, ref inventories);
+                    table = card;
+                    played = true;
+                }
+            }
+            if(!played) {
+                string card = Generate();
+                AddCard(1, card, ref inventories);
+            }
         }
     }
 }
