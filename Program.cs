@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,8 +32,12 @@ namespace Uno
                 Console.WriteLine("\n         Choisissez une option\n         1. Joueur une carte\n         2. Piocher une carte");
 
                 string choice1 = "";
+                choice1 = Console.ReadLine();
                 while(choice1 != "1" && choice1 != "2")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Option invalide");
+                    Console.ForegroundColor = ConsoleColor.White;
                     choice1 = Console.ReadLine();
                 }
                 if(choice1 == "1")
@@ -44,19 +48,19 @@ namespace Uno
                     DisplayPlayerCardsList(inventories);
 
                     string choice2 = "";
+                    int choice2_;
                     choice2 = Console.ReadLine();
-                    if(int.TryParse(choice2, out int choice2_)) {
-                        choice2_ -= 1;
-                        if(choice2_ >= 0 && choice2_ < inventories.GetLength(1))
-                        {
-                            string card = inventories[0, choice2_];
-                            if(card != null && CheckCardTable(card, table))
-                            {
-                                RemoveCard(0, card, ref inventories);
-                                table = card;
-                            }
-                        }
+                    while(!int.TryParse(choice2, out choice2_) || choice2_ < 1 || choice2_ > inventories.GetLength(1) || string.IsNullOrEmpty(inventories[0, choice2_ - 1]) || !CheckCardTable(inventories[0, choice2_ - 1], table))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Carte invalide");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        choice2 = Console.ReadLine();
                     }
+                    string card = inventories[0, choice2_ - 1];
+                    PlayCard(1, card, ref inventories);
+                    RemoveCard(0, card, ref inventories);
+                    table = card;
                 }
                 else {
                     string card = Generate();
@@ -66,10 +70,18 @@ namespace Uno
             }
             if(CountPlayerCards(inventories) == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.WriteLine("         Bien joué ! Vous avez gagné la partie :)");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
             }
             else {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.WriteLine("         Dommage ! Vous avez perdu la partie :(");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.ReadLine();
         }
@@ -126,6 +138,20 @@ namespace Uno
                 for (int j=0; j<8; j++)
                 {
                     inventories[i, j] = Generate();
+                }
+            }
+        }
+
+        // Jouer une carte
+        static void PlayCard(int id, string card, ref string[,] inventories)
+        {
+            string cardSymbol = card.Substring(1);
+            if(cardSymbol == "+2")
+            {
+                for(int i=0; i<2; i++)
+                {
+                    string newCard = Generate();
+                    AddCard(1, newCard, ref inventories);
                 }
             }
         }
@@ -238,6 +264,7 @@ namespace Uno
             return count;
         }
 
+        // Faire jouer le robot
         static void PlayBot(ref string table, ref string[,] inventories)
         {
             bool played = false;
@@ -253,6 +280,7 @@ namespace Uno
             }
             if(!played) {
                 string card = Generate();
+                PlayCard(0, card, ref inventories);
                 AddCard(1, card, ref inventories);
             }
         }
