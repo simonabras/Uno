@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,15 +58,14 @@ namespace Uno
                         choice2 = Console.ReadLine();
                     }
                     string card = inventories[0, choice2_ - 1];
-                    PlayCard(1, card, ref inventories);
+                    PlayCard(1, card, ref table, ref inventories);
                     RemoveCard(0, card, ref inventories);
-                    table = card;
                 }
                 else {
                     string card = Generate();
                     AddCard(0, card, ref inventories);
+                    PlayBot(ref table, ref inventories);
                 }
-                PlayBot(ref table, ref inventories);
             }
             if(CountPlayerCards(inventories) == 0)
             {
@@ -143,9 +142,11 @@ namespace Uno
         }
 
         // Jouer une carte
-        static void PlayCard(int id, string card, ref string[,] inventories)
+        static void PlayCard(int id, string card, ref string table, ref string[,] inventories)
         {
+            table = card;
             string cardSymbol = card.Substring(1);
+            
             if(cardSymbol == "+2")
             {
                 for(int i=0; i<2; i++)
@@ -153,6 +154,10 @@ namespace Uno
                     string newCard = Generate();
                     AddCard(1, newCard, ref inventories);
                 }
+            }
+            if((id == 1 && cardSymbol != "~" && cardSymbol != "^") || (id == 0 && (cardSymbol == "~" || cardSymbol == "^")))
+            {
+                PlayBot(ref table, ref inventories);
             }
         }
 
@@ -174,6 +179,7 @@ namespace Uno
                     added = true;
                 }
             }
+
         }
 
         // Retirer une carte de l'inventaire du joueur ou du robot
@@ -273,14 +279,13 @@ namespace Uno
                 string card = inventories[1, i];
                 if(!played && card != null && CheckCardTable(card, table))
                 {
+                    PlayCard(0, card, ref table, ref inventories);
                     RemoveCard(1, card, ref inventories);
-                    table = card;
                     played = true;
                 }
             }
             if(!played) {
                 string card = Generate();
-                PlayCard(0, card, ref inventories);
                 AddCard(1, card, ref inventories);
             }
         }
