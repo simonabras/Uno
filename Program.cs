@@ -1,4 +1,4 @@
-﻿﻿﻿﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace Uno
             {
                 table = Generate();
             }
-            while(table.Contains("+2") || table.Contains("~") || table.Contains("^"));
+            while(table.Contains("+2"));
 
             // Début du jeu
             while(CountPlayerCards(inventories) > 0 && CountBotCards(inventories) > 0)
@@ -119,10 +119,10 @@ namespace Uno
         static string Generate()
         {
             string[] cards = {
-                "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B+2", "B~", "B^",
-                "V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V+2", "V~", "V^",
-                "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R+2", "R~", "R^",
-                "J0", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J+2", "J~", "J^",
+                "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B+2",
+                "V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V+2",
+                "R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R+2",
+                "J0", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J+2",
             };
             Random rd = new Random();
             int number = rd.Next(0, cards.Length);
@@ -152,10 +152,10 @@ namespace Uno
                 for(int i=0; i<2; i++)
                 {
                     string newCard = Generate();
-                    AddCard(1, newCard, ref inventories);
+                    AddCard(id, newCard, ref inventories);
                 }
             }
-            if((id == 1 && cardSymbol != "~" && cardSymbol != "^") || (id == 0 && (cardSymbol == "~" || cardSymbol == "^")))
+            if(id == 1)
             {
                 PlayBot(ref table, ref inventories);
             }

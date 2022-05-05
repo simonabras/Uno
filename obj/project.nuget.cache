@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kHX5QfCfhVuceibjeWFP9fBhFO3hFXyqgsh5h4AK6pgyaLDp4veM4H2WGlCvZFlBGzH8P6/DT+xpJ7Il+D5ssw==",
+  "dgSpecHash": "hZ0aquMurQgp9l6D835rk4wGiVQ/61Ll9o6K+5t9t7VkMJ/lAOCGMNEeqxVt0vsIC2eeWsc0Jjn7Q1BiBYh+yA==",
   "success": true,
-  "projectFilePath": "C:\\Uno\\Uno.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj",
+  "expectedPackageFiles": [
+    "/Users/extrymes/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/extrymes/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/extrymes/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+  ],
   "logs": []
 }

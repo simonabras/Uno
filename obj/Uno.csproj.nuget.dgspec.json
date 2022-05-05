@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Uno\\Uno.csproj": {}
+    "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj": {}
   },
   "projects": {
-    "C:\\Uno\\Uno.csproj": {
+    "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Uno\\Uno.csproj",
+        "projectUniqueName": "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj",
         "projectName": "Uno",
-        "projectPath": "C:\\Uno\\Uno.csproj",
-        "packagesPath": "C:\\Users\\Simon\\.nuget\\packages\\",
-        "outputPath": "C:\\Uno\\obj\\",
+        "projectPath": "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj",
+        "packagesPath": "/Users/extrymes/.nuget/packages/",
+        "outputPath": "/Users/extrymes/Documents/Dev/ITN/Uno/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Simon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/extrymes/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,12 +47,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[5.0.16, 5.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/6.0.104_1/libexec/sdk/6.0.104/RuntimeIdentifierGraph.json"
         }
       }
     }
