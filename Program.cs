@@ -156,7 +156,7 @@ namespace Uno
                     AddCard(id, newCard, ref inventories);
                 }
             }
-            if(id == 1)
+            if(id == 1 && CountPlayerCards(inventories) > 0)
             {
                 PlayBot(ref table, ref inventories);
             }
