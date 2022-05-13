@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj",
+      "projectUniqueName": "/Users/extrymes/Documents/Dev/ITN/C#/Uno/Uno.csproj",
       "projectName": "Uno",
-      "projectPath": "/Users/extrymes/Documents/Dev/ITN/Uno/Uno.csproj",
+      "projectPath": "/Users/extrymes/Documents/Dev/ITN/C#/Uno/Uno.csproj",
       "packagesPath": "/Users/extrymes/.nuget/packages/",
-      "outputPath": "/Users/extrymes/Documents/Dev/ITN/Uno/obj/",
+      "outputPath": "/Users/extrymes/Documents/Dev/ITN/C#/Uno/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/extrymes/.nuget/NuGet/NuGet.Config"

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Uno
@@ -58,8 +59,8 @@ namespace Uno
                         choice2 = Console.ReadLine();
                     }
                     string card = inventories[0, choice2_ - 1];
-                    PlayCard(1, card, ref table, ref inventories);
                     RemoveCard(0, card, ref inventories);
+                    PlayCard(1, card, ref table, ref inventories);
                 }
                 else {
                     string card = Generate();
@@ -273,14 +274,20 @@ namespace Uno
         // Faire jouer le robot
         static void PlayBot(ref string table, ref string[,] inventories)
         {
+            Clean();
+            DisplayGame(inventories, table);
+            Console.WriteLine("\n        L'adversaire est en train de jouer ...");
+            Random rd = new Random();
+            int number = rd.Next(3, 6) * 1000;
+            Thread.Sleep(number);
             bool played = false;
             for(int i=0; i<inventories.GetLength(1); i++)
             {
                 string card = inventories[1, i];
                 if(!played && card != null && CheckCardTable(card, table))
                 {
-                    PlayCard(0, card, ref table, ref inventories);
                     RemoveCard(1, card, ref inventories);
+                    PlayCard(0, card, ref table, ref inventories);
                     played = true;
                 }
             }
