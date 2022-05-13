@@ -30,7 +30,7 @@ namespace Uno
             {
                 Clean();
                 DisplayGame(inventories, table);
-                Console.WriteLine("\n         Choisissez une option\n         1. Joueur une carte\n         2. Piocher une carte");
+                Console.WriteLine("\n         Choisissez une option\n         1. Jouer une carte\n         2. Piocher une carte");
 
                 string choice1 = "";
                 choice1 = Console.ReadLine();
